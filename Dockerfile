@@ -24,4 +24,4 @@ COPY --from=build gst-rtsp-launch /usr/bin/gst-rtsp-launch
 EXPOSE 8554
 
 ENTRYPOINT ["/usr/bin/gst-rtsp-launch"]
-CMD ["videotestsrc ! x264enc ! rtph264pay name=pay0 pt=96"]
+CMD ["udpsrc port=9999 ! tsdemux ! h264parse ! rtph264pay name=pay0 pt=96"]
